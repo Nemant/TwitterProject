@@ -1,0 +1,360 @@
+@(tweetIDForm: Form[Application.TweetID], tweetsArray : Array[Int], retweetsArray : Array[Int], totalRetweetsArray : Array[Int], totalRetweetsForUserArray : Array[Int], avgRetweetsForUserArray : Array[Int])
+
+@import helper._
+
+@main("Twitter") {
+  	<h2>Twitter Graphs - Arsenal</h2>
+	
+	    @**form(action = routes.Application.generate, args = 'id -> "tweetidform") {
+        
+        	@inputText(
+            	field = tweetIDForm("name"),
+            	args = '_label -> "TweetID", 'placeholder -> "123456789"
+        	)
+        	
+        	<p class="buttons">
+            	<input type="submit">
+        	<p>
+		}*@
+		
+		<br/>
+		Sun 3rd Mar 16.00 - Arsenal vs Tottenham Hotspur - Barclays Premier League 1 - 2
+		<br/>
+		Tue 5th Mar 19.45 Manchester United vs Real Madrid -  UEFA Champions League 1 - 2 (Arsenal only English team left in Champions League)
+		<br/>
+		Sun 10th Mar 16.00 Liverpool vs Tottenham Hotspur - Barclays Premier League 3 - 2 (Arsenal getting closer to Spurs in Premiere League)
+		<br/>
+		Tue 12th Mar 19.45 Barcelona vs AC Milan - UEFA Champions League 4 - 0 (Amazing Barcelona comeback from first leg (2 - 0), Arsenal fans getting their hopes high)
+		<br/>
+		Wed 13th Mar 19.45 - Bayern Munich vs Arsenal - UEFA Champions League 2 - 0
+		<br/>
+		Fri 15th Mar 00.30 Arsenal de sarandi vs Sao Paolo  - Copa de America Libertadores 2 - 1 (Different Arsenal team from Argentina playing the Libertadores Cup)
+		<br/>
+		Sat 16th Mar 15.00 - Swansea vs Arsenal - Barclays Premier League 0 - 2
+		<br/>
+		Sun 17th Mar 15.00 - Tottenham Hotspur vs Fulham - Barclays Premier League 0 - 1 (Arsenal catching up to Spurs)
+		
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+	    <br/>
+    	Note for the following graph: Messages with less than 250 retweets have been ignored, otherwise graph is not very visible.
+		<div id="container2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<br/>
+		Note for the following graph: Users with less than 400 total retweets have been ignored.
+		<div id="container3" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<br/>
+		Note for the following graph: Users who had less than 30 retweets per message on average have been ignored.
+		<div id="container4" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+		<script>
+        	var tweetData = []
+        	@if(tweetsArray != null) {
+            	@for(id <- tweetsArray) {
+            		tweetData.push(@id);
+            	}
+	        }
+    	
+	    	var retweetData = []
+	        	@if(retweetsArray != null) {
+	            	@for(id <- retweetsArray) {
+	            		retweetData.push(@id);
+	            	}
+		        }
+		
+		$(function () {
+        $('#container').highcharts({
+            chart: {
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: 'Volume of Data (2nd of March - 21st of March) - Tweets: 2,085,498 - ReTweets: 1,041,125' 
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' :
+                    'Drag your finger over the plot to zoom in'
+            },
+            xAxis: {
+                type: 'datetime',
+                maxZoom: 1 * 3600000, // 1 day
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Total Tweets/ReTweets'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+    
+            series: [{
+                type: 'area',
+                name: 'Tweets',
+                pointInterval: 10 * 60 * 1000,
+                pointStart: Date.UTC(2013, 2, 02, 22, 46, 15, 0),
+                data: tweetData
+            }, {
+            	type: 'area',
+                name: 'ReTweets',
+                pointInterval: 10 * 60 * 1000,
+                pointStart: Date.UTC(2013, 2, 02, 22, 46, 15, 0),
+                data: retweetData
+            }]
+        });
+    });
+    </script>
+
+    <script>
+    var totalRetweetData = []
+    @if(totalRetweetsArray != null) {
+    	@for(i <- 4 until totalRetweetsArray.length){
+    		totalRetweetData.push(@totalRetweetsArray(i));
+		}
+	}
+    
+    $(function () {
+        $('#container2').highcharts({
+            chart: {
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: 'Number of retweeted messages against number of ReTweets - Messages: 200,470' 
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' :
+                    'Drag your finger over the plot to zoom in'
+            },
+            xAxis: {
+                type: 'linear',
+                maxZoom: 20, // 1 day
+                title: {
+                    text: 'Number of times they got retweeted'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of messages which got retweeted'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+    
+            series: [{
+                type: 'area',
+                name: 'Number of messages',
+                pointInterval: 50,
+                pointStart: 250,
+                data: totalRetweetData
+            }]
+        });
+    });
+    </script>
+
+    <script>
+    var totalRetweeForUsertData = []
+    @if(totalRetweetsArray != null) {
+    	@for(i <- 3 until totalRetweetsForUserArray.length){
+    		totalRetweeForUsertData.push(@totalRetweetsForUserArray(i));
+		}
+	}
+    
+    $(function () {
+        $('#container3').highcharts({
+            chart: {
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: 'Number of retweeted users against total number of ReTweets - Users: 108,826' 
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' :
+                    'Drag your finger over the plot to zoom in'
+            },
+            xAxis: {
+                type: 'linear',
+                maxZoom: 20, // 1 day
+                title: {
+                    text: 'Total Retweets recieved'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of users'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+    
+            series: [{
+                type: 'area',
+                name: 'Users',
+                pointInterval: 100,
+                pointStart: 400,
+                data: totalRetweeForUsertData
+            }]
+        });
+    });
+    </script>
+		
+    <script>
+    var avgRetweeForUsertData = []
+    @if(totalRetweetsArray != null) {
+    	@for(i <- 1 until avgRetweetsForUserArray.length){
+    		avgRetweeForUsertData.push(@avgRetweetsForUserArray(i));
+		}
+	}
+    
+    $(function () {
+        $('#container4').highcharts({
+            chart: {
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: 'Number of ReTweeted users against their average number of ReTweets' 
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' :
+                    'Drag your finger over the plot to zoom in'
+            },
+            xAxis: {
+                type: 'linear',
+                maxZoom: 20, // 1 day
+                title: {
+                    text: 'Average retweets'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of users'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+    
+            series: [{
+                type: 'area',
+                name: 'Users',
+                pointInterval: 30,
+                pointStart: 30,
+                data: avgRetweeForUsertData
+            }]
+        });
+    });
+    </script>
+    
+}
