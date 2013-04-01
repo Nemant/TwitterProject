@@ -139,7 +139,7 @@
     <script>
     var totalRetweetData = []
     @if(totalRetweetsArray != null) {
-    	@for(i <- 4 until totalRetweetsArray.length){
+    	@for(i <- 0 until totalRetweetsArray.length){
     		totalRetweetData.push(@totalRetweetsArray(i));
 		}
 	}
@@ -160,7 +160,7 @@
             },
             xAxis: {
                 maxZoom: 20, // 1 day
-                type: 'logarithmic',
+                type: 'linear',
                 title: {
                     text: 'Number of times they got retweeted'
                 }
@@ -204,7 +204,7 @@
                 type: 'area',
                 name: 'Number of messages',
                 pointInterval: 50,
-                pointStart: 250,
+                pointStart: 1,
                 data: totalRetweetData
             }]
         });
@@ -214,7 +214,7 @@
     <script>
     var totalRetweeForUsertData = []
     @if(totalRetweetsArray != null) {
-    	@for(i <- 3 until totalRetweetsForUserArray.length){
+    	@for(i <- 0 until totalRetweetsForUserArray.length){
     		totalRetweeForUsertData.push(@totalRetweetsForUserArray(i));
 		}
 	}
@@ -223,7 +223,7 @@
         $('#container3').highcharts({
             chart: {
                 zoomType: 'x',
-                spacingRight: 20
+                spacingRight: 20,
             },
             title: {
                 text: 'Number of retweeted users against total number of ReTweets - Users: 108,826' 
@@ -235,7 +235,7 @@
             },
             xAxis: {
                 maxZoom: 20, // 1 day
-                type: 'logarithmic',
+                type: 'linear',
                 title: {
                     text: 'Total Retweets recieved'
                 }
@@ -251,32 +251,33 @@
             },
             legend: {
                 enabled: true
-            },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
-                    },
-                    lineWidth: 1,
-                    marker: {
-                        enabled: false
-                    },
-                    shadow: false,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    },
-                    threshold: null
-                }
-            },
+            }
+   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ,
     
             series: [{
-                type: 'area',
+                type: 'column',
                 name: 'Users',
                 pointInterval: 100,
                 pointStart: 400,
