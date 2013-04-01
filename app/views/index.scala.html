@@ -142,7 +142,7 @@
 	
     var ratioData = []
         for(var i = 0; i < tweetData.length; i++) {
-            ratioData.push(tweetData[i] / retweetData[i]);
+            ratioData.push(retweetData[i]/ tweetData[i]);
         }
     
 	$(function () {
@@ -168,7 +168,7 @@
 	            },
 	            yAxis: {
 	                title: {
-	                    text: 'Tweets/ReTweets Ratio'
+	                    text: 'ReTweets/Tweets Ratio'
 	                },
 	                type: 'linear'
 	            },
@@ -179,7 +179,7 @@
 	                enabled: true
 	            },
 	            series: [{
-	                type: 'line',
+	                type: 'area',
 	                name: 'Ratio',
 	                pointInterval: 10 * 60 * 1000,
 	                pointStart: Date.UTC(2013, 2, 02, 22, 46, 15, 0),
