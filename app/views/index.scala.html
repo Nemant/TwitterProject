@@ -88,7 +88,7 @@
                 title: {
                     text: 'Total Tweets/ReTweets'
                 },
-                type: 'logarithmic'
+                type: 'linear'
             },
             tooltip: {
                 shared: true
@@ -128,6 +128,7 @@
             }, {
             	type: 'area',
                 name: 'ReTweets',
+color: '#FF0000',
                 pointInterval: 10 * 60 * 1000,
                 pointStart: Date.UTC(2013, 2, 02, 22, 46, 15, 0),
                 data: retweetData
@@ -199,8 +200,8 @@
     $(function () {
         $('#container3').highcharts({
             chart: {
-                zoomType: 'x',
-                spacingRight: 20,
+                //zoomType: 'x',
+                //spacingRight: 20,
             },
             title: {
                 text: 'Number of retweeted users against total number of ReTweets - Users: 108,826' 
@@ -211,7 +212,7 @@
                     'Drag your finger over the plot to zoom in'
             },
             xAxis: {
-                maxZoom: 20, // 1 day
+               // maxZoom: 20, // 1 day
                 type: 'linear',
                 title: {
                     text: 'Total Retweets recieved'
@@ -233,7 +234,7 @@
                 type: 'column',
                 name: 'Users',
                 pointInterval: 100,
-                pointStart: 400,
+                pointStart:1 ,
                 data: totalRetweeForUsertData
             }]
         });
@@ -243,7 +244,7 @@
     <script>
     var avgRetweeForUsertData = []
     @if(totalRetweetsArray != null) {
-    	@for(i <- 1 until avgRetweetsForUserArray.length){
+    	@for(i <- 0 until avgRetweetsForUserArray.length){
     		avgRetweeForUsertData.push(@avgRetweetsForUserArray(i));
 		}
 	}
@@ -285,7 +286,7 @@
                 type: 'column',
                 name: 'Users',
                 pointInterval: 30,
-                pointStart: 30,
+                pointStart: 1,
                 data: avgRetweeForUsertData
             }]
         });
