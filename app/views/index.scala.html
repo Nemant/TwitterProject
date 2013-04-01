@@ -177,31 +177,8 @@
             legend: {
                 enabled: true
             },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
-                    },
-                    lineWidth: 1,
-                    marker: {
-                        enabled: false
-                    },
-                    shadow: false,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    },
-                    threshold: null
-                }
-            },
-    
             series: [{
-                type: 'area',
+                type: 'column',
                 name: 'Number of messages',
                 pointInterval: 50,
                 pointStart: 1,
@@ -251,31 +228,7 @@
             },
             legend: {
                 enabled: true
-            }
-   
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ,
-    
+            },
             series: [{
                 type: 'column',
                 name: 'Users',
@@ -311,7 +264,7 @@
             },
             xAxis: {
                 maxZoom: 20, // 1 day
-                type: 'logarithmic',
+                type: 'linear',
                 title: {
                     text: 'Average retweets'
                 }
@@ -328,31 +281,8 @@
             legend: {
                 enabled: true
             },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
-                    },
-                    lineWidth: 1,
-                    marker: {
-                        enabled: false
-                    },
-                    shadow: false,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    },
-                    threshold: null
-                }
-            },
-    
             series: [{
-                type: 'area',
+                type: 'column',
                 name: 'Users',
                 pointInterval: 30,
                 pointStart: 30,
