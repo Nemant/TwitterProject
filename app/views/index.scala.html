@@ -52,14 +52,14 @@
         	var tweetData = []
         	@if(tweetsArray != null) {
             	@for(id <- tweetsArray) {
-            		//tweetData.push(@id);
+            		tweetData.push(@id);
             	}
 	        }
     	
 	    	var retweetData = []
 	        	@if(retweetsArray != null) {
 	            	@for(id <- retweetsArray) {
-	            		//retweetData.push(@id);
+	            		retweetData.push(@id);
 	            	}
 		        }
 		
