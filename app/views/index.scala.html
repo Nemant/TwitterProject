@@ -51,7 +51,7 @@
         var plus = function() {
         	jsRoutes.controllers.Application.liveFeed().ajax({
         		success: function(data) {
-        			$("#result").html(data);
+        			$("#result").load(data);
         		},
         		error: function() {
         			alert("Error!")
