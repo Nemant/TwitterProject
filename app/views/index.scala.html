@@ -45,13 +45,13 @@
         <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
         <input type='button' value='Start Feed' id='liveFeedBtn' />
         <br />
-        <div id="result" />
+        <div id="result"></div>
         
         <script type="text/javascript" charset="utf-8">
         var plus = function() {
         	jsRoutes.controllers.Application.liveFeed().ajax({
         		success: function(data) {
-        			$("#result").load(data);
+        			$("#result").html(data);
         		},
         		error: function() {
         			alert("Error!")
