@@ -1,6 +1,7 @@
 @(tweetIDForm: Form[Application.TweetID], tweetsArray : Array[Int], retweetsArray : Array[Int], totalRetweetsArray : Array[Int], totalRetweetsForUserArray : Array[Int], avgRetweetsForUserArray : Array[Int])
 
 @import helper._
+@import controllers.routes.javascript._
 
 @main("Twitter") {
   	<h2>Twitter Graphs - Arsenal</h2>
@@ -40,6 +41,28 @@
 		
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+        <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
+        <input type='button' value='Start Feed' id='liveFeedBtn' />
+        <br />
+        <div id="result" />
+        
+        <script type="text/javascript" charset="utf-8">
+	    var plus = function() {
+	      
+	      jsRoutes.controllers.Application.liveFeed().ajax({
+	        success: function(data) {
+	          $("#result").html(data);
+	        },
+	        error: function() {
+	          alert("Error!")
+	        }
+	      })
+	    };
+	
+	$('#liveFeedBtn').click(plus);
+	</script>
+
 
 		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 		<div id="containerRatios" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
