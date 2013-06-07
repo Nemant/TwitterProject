@@ -48,17 +48,16 @@
         <div id="result" />
         
         <script type="text/javascript" charset="utf-8">
-	    var plus = function() {
-	      
-	      jsRoutes.controllers.Application.liveFeed().ajax({
-	        success: function(data) {
-	          $("#result").html(data);
-	        },
-	        error: function() {
-	          alert("Error!")
-	        }
-	      })
-	    };
+        var plus = function() {
+        	jsRoutes.controllers.Application.liveFeed().ajax({
+        		success: function(data) {
+        			$("#result").html(data);
+        		},
+        		error: function() {
+        			alert("Error!")
+        		}
+        	})
+        };
 	
 	$('#liveFeedBtn').click(plus);
 	</script>
