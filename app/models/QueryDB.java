@@ -255,6 +255,8 @@ public class QueryDB {
 		Connection connection2 = DB.getConnection();
 		ResultSet rs = null; 
 		
+		System.out.println("test1");
+		
 		try {
 			PreparedStatement preparedStatement = connection2.prepareStatement(
 					"(" +
@@ -274,6 +276,7 @@ public class QueryDB {
 					"LIMIT 20" +
 					";");
 			rs = preparedStatement.executeQuery();
+			System.out.println("test2");
 			System.out.println(rs.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
