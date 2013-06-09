@@ -1,5 +1,7 @@
 package controllers;
 
+import org.codehaus.jackson.node.ObjectNode;
+
 import play.data.validation.Constraints.Required;
 import static play.data.Form.*;
 import models.Metrics;
@@ -18,8 +20,8 @@ public class Application extends Controller {
 	}
 	
 	public static Result liveFeed() {
-	      Metrics.getLiveFeed();
-	      return ok(ajax_result.render(answer));
+	      
+	      return ok(ajax_result.render(Metrics.getLiveFeed()));
 	  }
 
 	public static Result javascriptRoutes() {
