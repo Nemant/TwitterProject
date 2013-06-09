@@ -30,8 +30,6 @@ public class Tweet {
 	}
 	
 	public void setDateTime(Time dateTime) {
-//		System.out.println(dateTime.getTime());
-//		System.out.println(dateTime.toString());
 		this.dateTime = dateTime;
 	}
 	

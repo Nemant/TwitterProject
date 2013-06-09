@@ -59,6 +59,12 @@ public class QueryDB {
 			e.printStackTrace();
 		}
 		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return rs;
 	}
 	
@@ -72,6 +78,13 @@ public class QueryDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return rs;
 	}
 	
@@ -85,6 +98,13 @@ public class QueryDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return rs;
 	}
 	
@@ -98,6 +118,13 @@ public class QueryDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return rs;
 	}
 	/**
@@ -274,6 +301,11 @@ public class QueryDB {
 					"LIMIT 20" +
 					";");
 			rs = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			connection2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
