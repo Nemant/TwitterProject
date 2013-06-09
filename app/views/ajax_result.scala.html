@@ -3,7 +3,7 @@
 
 var tweetData = []
     @for(id <- result) {
-        @id.user;
+        @id.getUser();
         @id.text;
         @id.dateTime;
         <br/>
