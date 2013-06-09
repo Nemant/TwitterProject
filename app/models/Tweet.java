@@ -24,8 +24,8 @@ public class Tweet {
 		this.user = user;
 	}
 	
-	public Date getDateTime() {
-		return dateTime;
+	public String getDateTime() {
+		return dateTime.toString();
 	}
 	
 	public void setDateTime(Date dateTime) {

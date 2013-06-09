@@ -1,10 +1,8 @@
 @(result: Array[Tweet])
-@result
 
 var tweetData = []
     @for(id <- result) {
-        @id.getUser();
-        @id.getText;
-        @id.getDateTime;
+        @id.getDateTime : @id.getUser(): @id.getText
+        
         <br/>
     }

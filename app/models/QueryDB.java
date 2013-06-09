@@ -254,7 +254,7 @@ public class QueryDB {
 	public static ResultSet getLatestTweets(){
 		Connection connection2 = DB.getConnection();
 		ResultSet rs = null; 
-				
+
 		try {
 			PreparedStatement preparedStatement = connection2.prepareStatement(
 					"(" +
@@ -274,8 +274,6 @@ public class QueryDB {
 					"LIMIT 20" +
 					";");
 			rs = preparedStatement.executeQuery();
-			System.out.println("test2");
-			System.out.println(rs.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
