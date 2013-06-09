@@ -49,7 +49,7 @@
         
         <script type="text/javascript" charset="utf-8">
                 
-        var plus = function() {
+        function plus() {
         	jsRoutes.controllers.Application.liveFeed().ajax({
         		success: function(data) {
         			$("#result").html(data);
@@ -61,7 +61,7 @@
         };
 	
 	$('#liveFeedBtn').click(plus);
-    window.setInterval(plus(), 1000);
+    window.setInterval(plus, 1000);
 
 	</script>
 
