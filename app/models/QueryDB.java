@@ -274,6 +274,7 @@ public class QueryDB {
 					"LIMIT 20" +
 					";");
 			rs = preparedStatement.executeQuery();
+			System.out.println(rs.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
