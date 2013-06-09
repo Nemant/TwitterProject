@@ -10,8 +10,8 @@ import twitter4j.Status;
 public class Store {
 
 	private static Connection connection;
-	private String statementTweets = "INSERT INTO \"FinalProject\".\"Tweets\"(\"TweetID\", \"DateTime\", \"User\", \"Blog\") VALUES(?, ?, ?, ?)";
-	private String statementReTweets = "INSERT INTO \"FinalProject\".\"ReTweets\"(\"TweetID\", \"DateTime\", \"User\", \"Blog\", \"OriginalTweetID\") VALUES(?, ?, ?, ?, ?)";
+	private String statementTweets = "INSERT INTO \"FinalProject\".\"Tweets\"(\"TweetID\", \"DateTime\", \"User\", \"Blog\", \"UserName\") VALUES(?, ?, ?, ?, ?)";
+	private String statementReTweets = "INSERT INTO \"FinalProject\".\"ReTweets\"(\"TweetID\", \"DateTime\", \"User\", \"Blog\", \"UserName\", \"OriginalTweetID\") VALUES(?, ?, ?, ?, ?, ?)";
 	private static String statementTweetsInInterval = "INSERT INTO \"FinalProject\".\"TweetsInInterval\" (\"DateTimeStart\", \"DateTimeFinish\", \"UniqueTweets\", \"UniqueUsers\") VALUES (?, ?, ?, ?);";
 	private static String statementReTweetsInInterval = "INSERT INTO \"FinalProject\".\"ReTweetsInInterval\" (\"DateTimeStart\", \"DateTimeFinish\", \"UniqueReTweets\", \"UniqueUsers\") VALUES (?, ?, ?, ?);";
 	
@@ -39,7 +39,7 @@ public class Store {
 	public void storeReTweet(Status tweet) {
 		PreparedStatement stm = prepareStatement(tweet, statementReTweets);
 		try {
-			stm.setString(5, Long.toString(tweet.getRetweetedStatus().getId()));
+			stm.setString(6, Long.toString(tweet.getRetweetedStatus().getId()));
 			stm.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Retweet: " + e.getMessage());
@@ -55,6 +55,7 @@ public class Store {
 	        preparedStatement.setTimestamp(2, timestamp);
 	        preparedStatement.setString(3, Long.toString(tweet.getUser().getId()));
 	        preparedStatement.setString(4, tweet.getText());
+	        preparedStatement.setString(5, tweet.getUser().getName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
