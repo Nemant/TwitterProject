@@ -288,14 +288,14 @@ public class QueryDB {
 						"SELECT \"User\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"ReTweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
-						"LIMIT 10" +
+						"LIMIT 40" +
 					")" +
 					"UNION" +
 					"(" +
 						"SELECT \"User\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"Tweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
-						"LIMIT 10" +
+						"LIMIT 40" +
 					")" +
 					"ORDER BY \"DateTime\" DESC " +
 					"LIMIT 20" +
