@@ -1,12 +1,12 @@
 package models;
 
-import java.util.Date;
+import java.sql.Time;
 
 public class Tweet {
 
 	private String text;
 	private String user;
-	private Date dateTime;
+	private Time dateTime;
 	
 	public String getText() {
 		return text;
@@ -25,11 +25,11 @@ public class Tweet {
 	}
 	
 	public String getDateTime() {
-//		System.out.println(dateTime.toString());
+		System.out.println(dateTime);
 		return dateTime.toString();
 	}
 	
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(Time dateTime) {
 //		System.out.println(dateTime.getTime());
 //		System.out.println(dateTime.toString());
 		this.dateTime = dateTime;

@@ -358,10 +358,10 @@ public class Metrics {
 			while (rs.next()) {
 				Tweet t = new Tweet();
 				t.setUser(rs.getString(1));
-				System.out.println(rs.getTimestamp(2).getTime());
+				System.out.println(rs.getTime(2).toString());
 				System.out.println(rs.getTimestamp(2).toString());
 				
-				t.setDateTime(new Date(rs.getTimestamp(2).getTime()));
+				t.setDateTime(rs.getTime(2));
 				t.setText(rs.getString(3));
 				latestTweets[i] = t;
 				i++;
