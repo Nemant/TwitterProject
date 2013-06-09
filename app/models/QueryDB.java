@@ -261,18 +261,18 @@ public class QueryDB {
 			PreparedStatement preparedStatement = connection2.prepareStatement(
 					"(" +
 						"SELECT \"User\", \"DateTime\", \"Blog\" " +
-						"FROM \"FinalProject\".\"ReTweets\"" +
-						"ORDER BY \"DateTime\" DESC" +
+						"FROM \"FinalProject\".\"ReTweets\" " +
+						"ORDER BY \"DateTime\" DESC " +
 						"LIMIT 20" +
 					")" +
 					"UNION" +
 					"(" +
-						"SELECT \"User\", \"DateTime\", \"Blog\"" +
-						"FROM \"FinalProject\".\"Tweets\"" +
-						"ORDER BY \"DateTime\" DESC" +
+						"SELECT \"User\", \"DateTime\", \"Blog\" " +
+						"FROM \"FinalProject\".\"Tweets\" " +
+						"ORDER BY \"DateTime\" DESC " +
 						"LIMIT 20" +
 					")" +
-					"ORDER BY \"DateTime\" ASC" +
+					"ORDER BY \"DateTime\" ASC " +
 					"LIMIT 20" +
 					";");
 			rs = preparedStatement.executeQuery();
