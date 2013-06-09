@@ -292,7 +292,7 @@ public class QueryDB {
 					")" +
 					"UNION" +
 					"(" +
-						"SELECT \"User\", \"DateTime\", \"Blog\" " +
+						"SELECT \"UserName\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"Tweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
 						"LIMIT 40" +
