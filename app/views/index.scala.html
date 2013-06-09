@@ -48,6 +48,9 @@
         <div id="result"></div>
         
         <script type="text/javascript" charset="utf-8">
+        
+        window.setInterval(plus, 1000);
+        
         var plus = function() {
         	jsRoutes.controllers.Application.liveFeed().ajax({
         		success: function(data) {
