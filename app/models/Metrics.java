@@ -359,6 +359,8 @@ public class Metrics {
 				Tweet t = new Tweet();
 				t.setUser(rs.getString(1));
 				System.out.println(rs.getTimestamp(2).getTime());
+				System.out.println(rs.getTimestamp(2).toString());
+				
 				t.setDateTime(new Date(rs.getTimestamp(2).getTime()));
 				t.setText(rs.getString(3));
 				latestTweets[i] = t;
