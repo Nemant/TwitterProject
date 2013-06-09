@@ -356,6 +356,7 @@ public class Metrics {
 		
 		try {
 			while (rs.next()) {
+				System.out.println("yo " + i);
 				Tweet t = new Tweet();
 				t.setUser(rs.getString(0));
 				t.setDateTime(new Date(rs.getDate(1).getTime()));
