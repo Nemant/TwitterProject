@@ -353,11 +353,9 @@ public class Metrics {
 		ResultSet rs = QueryDB.getLatestTweets();
 		Tweet[] latestTweets = new Tweet[20];
 		int i = 0;
-		System.out.println("yo " + i);
 
 		try {
 			while (rs.next()) {
-				System.out.println("yo " + i);
 				Tweet t = new Tweet();
 				t.setUser(rs.getString(1));
 				t.setDateTime(new Date(rs.getDate(2).getTime()));
