@@ -1,6 +1,7 @@
 package models;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -347,12 +348,25 @@ public class Metrics {
 
 		createChart(retweetsList);
 	}
-	//add stuff to hashmap
-
-
-	// Metric for a tweet
-	// Metric for a user
-	// Metric taking into account followers/followees
-	// How metrics change over time per user, per tweet etc
-	// show a user's influence at time x, then time y, etc...
+	
+	public static Tweet[] getLiveFeed() {
+		ResultSet rs = QueryDB.getLatestTweets();
+		Tweet[] latestTweets = new Tweet[20];
+		int i = 0;
+		
+		try {
+			while (rs.next()) {
+				Tweet t = new Tweet();
+				t.setUser(rs.getString(0));
+				t.setDateTime(new Date(rs.getDate(1).getTime()));
+				t.setText(rs.getString(2));
+				latestTweets[i] = t;
+				i++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return latestTweets;
+	}
 }

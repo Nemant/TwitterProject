@@ -251,4 +251,32 @@ public class QueryDB {
 
 	}
 	
+	public static ResultSet getLatestTweets(){
+		Connection connection2 = DB.getConnection();
+		ResultSet rs = null; 
+		
+		try {
+			PreparedStatement preparedStatement = connection2.prepareStatement(
+					"(" +
+						"SELECT \"User\", \"DateTime\", \"Blog\" " +
+						"FROM \"FinalProject\".\"ReTweets\"" +
+						"ORDER BY \"DateTime\" DESC" +
+						"LIMIT 20" +
+					")" +
+					"UNION" +
+					"(" +
+						"SELECT \"User\", \"DateTime\", \"Blog\"" +
+						"FROM \"FinalProject\".\"Tweets\"" +
+						"ORDER BY \"DateTime\" DESC" +
+						"LIMIT 20" +
+					")" +
+					"ORDER BY \"DateTime\" ASC" +
+					"LIMIT 20" +
+					";");
+			rs = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }

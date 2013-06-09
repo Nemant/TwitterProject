@@ -18,7 +18,7 @@ public class Application extends Controller {
 	}
 	
 	public static Result liveFeed() {
-	      Integer answer = new Integer(6);
+	      Metrics.getLiveFeed();
 	      return ok(ajax_result.render(answer));
 	  }
 
