@@ -5,6 +5,7 @@ import org.codehaus.jackson.node.ObjectNode;
 import play.data.validation.Constraints.Required;
 import static play.data.Form.*;
 import models.Metrics;
+import models.Tweet;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -20,8 +21,8 @@ public class Application extends Controller {
 	}
 	
 	public static Result liveFeed() {
-	      
-	      return ok(ajax_result.render(Metrics.getLiveFeed()));
+	      Tweet[] tweets = Metrics.getLiveFeed();
+	      return ok(ajax_result.render(tweets));
 	  }
 
 	public static Result javascriptRoutes() {
