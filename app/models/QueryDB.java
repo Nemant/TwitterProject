@@ -254,9 +254,7 @@ public class QueryDB {
 	public static ResultSet getLatestTweets(){
 		Connection connection2 = DB.getConnection();
 		ResultSet rs = null; 
-		
-		System.out.println("test1");
-		
+				
 		try {
 			PreparedStatement preparedStatement = connection2.prepareStatement(
 					"(" +
