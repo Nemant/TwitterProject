@@ -285,7 +285,7 @@ public class QueryDB {
 		try {
 			PreparedStatement preparedStatement = connection2.prepareStatement(
 					"(" +
-						"SELECT \"User\", \"DateTime\", \"Blog\" " +
+						"SELECT \"UserName\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"ReTweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
 						"LIMIT 40" +
