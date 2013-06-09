@@ -25,12 +25,13 @@ public class Tweet {
 	}
 	
 	public String getDateTime() {
-		System.out.println(dateTime.toString());
+//		System.out.println(dateTime.toString());
 		return dateTime.toString();
 	}
 	
 	public void setDateTime(Date dateTime) {
-		System.out.println(dateTime.toString());
+//		System.out.println(dateTime.getTime());
+//		System.out.println(dateTime.toString());
 		this.dateTime = dateTime;
 	}
 	
