@@ -351,7 +351,7 @@ public class Metrics {
 	
 	public static Tweet[] getLiveFeed() {
 		ResultSet rs = QueryDB.getLatestTweets();
-		Tweet[] latestTweets = new Tweet[20];
+		Tweet[] latestTweets = new Tweet[10];
 		int i = 0;
 
 		try {
