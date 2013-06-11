@@ -312,12 +312,17 @@ public class QueryDB {
 		return rs;
 	}
 	
-	public static ResultSet getTopTweetedUsers(){
+	public static ResultSet getTopTweetedUsers(String topTweetorAvg){
 		Connection connection2 = DB.getConnection();
 		ResultSet rs = null; 
+		PreparedStatement preparedStatement;
 		
 		try {
-			PreparedStatement preparedStatement = connection2.prepareStatement("SELECT \"User\", \"UserName\", \"Followers\", \"Followees\", \"Location\", \"Timezone\"  FROM \"FinalProject\".\"total_retweets_for_user\" ORDER BY \"Total Retweets\" DESC LIMIT 60");
+			if (topTweetorAvg.equals("TOP")) {
+				preparedStatement = connection2.prepareStatement("SELECT \"User\", \"UserName\", \"Total No. Of Tweets\", \"Total Retweets\", \"AverageRetweets\", \"Followers\", \"Followees\", \"Location\", \"Timezone\"  FROM \"FinalProject\".\"total_retweets_for_user\" ORDER BY \"Total Retweets\" DESC LIMIT 60");
+			} else {
+				preparedStatement = connection2.prepareStatement("SELECT \"User\", \"UserName\", \"Followers\", \"Followees\", \"Location\", \"Timezone\"  FROM \"FinalProject\".\"total_retweets_for_user\" ORDER BY \"Average Retweets\" DESC LIMIT 60");
+			}
 			rs = preparedStatement.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();

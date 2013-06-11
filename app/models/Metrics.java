@@ -371,26 +371,21 @@ public class Metrics {
 		return latestTweets;
 	}
 	
-	public static void getUserData() {
-		ResultSet rs = QueryDB.getTopTweetedUsers();
-		Twitter twitter = new TwitterFactory().getSingleton();
+	public static UserData[] getTopTweetedUsers() {
+		ResultSet rs = QueryDB.getTopTweetedUsers("TOP");
+		UserData[] userData = new UserData[60];
+		int i = 0;
 		
 		try {
 			while (rs.next()) {
-				try {
-					User user = twitter.showUser(Long.parseLong(rs.getString(1)));
-					System.out.println(user.getName());
-//					rs.updateString(2, user.getName());
-//					rs.updateRow();
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				} catch (TwitterException e) {
-					e.printStackTrace();
-				}
-				break;
-			} 
+				UserData user = new UserData(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9));
+				userData[i] = user;
+				i++;
+			}
 		} catch (SQLException e) {
-					e.printStackTrace();
+			e.printStackTrace();
 		}
+		
+		return userData;
 	}
 }
