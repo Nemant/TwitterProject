@@ -16,12 +16,12 @@ body {
 }
 
 #tabs li {
-  float: left;
+  float: centre;
   margin: 0 -15px 0 0;
 }
 
 #tabs a {
-  float: left;
+  float: centre;
   position: relative;
   padding: 0 40px;
   height: 0; 
