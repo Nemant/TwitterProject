@@ -311,4 +311,23 @@ public class QueryDB {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getTopTweetedUsers(){
+		Connection connection2 = DB.getConnection();
+		ResultSet rs = null; 
+		
+		try {
+			PreparedStatement preparedStatement = connection2.prepareStatement("SELECT \"User\", \"UserName\", \"Followers\", \"Followees\", \"Location\", \"Timezone\"  FROM \"FinalProject\".\"total_retweets_for_user\" ORDER BY \"Total Retweets\" DESC LIMIT 60");
+			rs = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rs;	}
 }

@@ -1,7 +1,6 @@
 package models;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,12 +16,13 @@ import java.util.LinkedList;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.data.time.TimeSeriesDataItem;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
 
 public class Metrics {
 
@@ -370,4 +370,27 @@ public class Metrics {
 		
 		return latestTweets;
 	}
+	
+	public static void getUserData() {
+		ResultSet rs = QueryDB.getTopTweetedUsers();
+		Twitter twitter = new TwitterFactory().getSingleton();
+		
+		try {
+			while (rs.next()) {
+				try {
+					User user = twitter.showUser(Long.parseLong(rs.getString(1)));
+					System.out.println(user.getName());
+//					rs.updateString(2, user.getName());
+//					rs.updateRow();
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				} catch (TwitterException e) {
+					e.printStackTrace();
+				}
+				break;
+			} 
+		} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 }

@@ -17,6 +17,7 @@ public class Application extends Controller {
     }
     
 	public static Result index() {
+		Metrics.getUserData();
 		return ok(index.render(form(TweetID.class), Metrics.getVolumeOfTweets(), Metrics.getVolumeOfReTweets(), Metrics.getTotalretweetsForTweet(), Metrics.getTotalretweetsForUser(), Metrics.getAvgretweetsForUser()));
 	}
 	
