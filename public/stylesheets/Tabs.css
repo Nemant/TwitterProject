@@ -5,7 +5,12 @@ body {
     font-size: small;
     background-color: #eee;
     background-image: url(data:image/gif;base64,R0lGODlhCAAIAJEAAMzMzP///////wAAACH5BAEHAAIALAAAAAAIAAgAAAINhG4nudroGJBRsYcxKAA7);
-  }
+}
+
+#result {
+	background: rgba(169,169,169, 0.5);
+	border-radius: 15px;
+}
 
 #tabs {
   overflow: hidden;
@@ -16,12 +21,12 @@ body {
 }
 
 #tabs li {
-  float: centre;
+  float: left;
   margin: 0 -15px 0 0;
 }
 
 #tabs a {
-  float: centre;
+  float: left;
   position: relative;
   padding: 0 40px;
   height: 0; 
