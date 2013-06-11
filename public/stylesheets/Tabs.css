@@ -10,6 +10,10 @@ body {
 #result {
 	background: rgba(169,169,169, 0.5);
 	border-radius: 15px;
+	padding-top: 5px;  
+    padding-right: 5px;  
+    padding-bottom: 5px;  
+    padding-left: 5px;
 }
 
 #tabs {
