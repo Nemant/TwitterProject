@@ -288,17 +288,17 @@ public class QueryDB {
 						"SELECT \"UserName\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"ReTweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
-						"LIMIT 40" +
+						"LIMIT 20" +
 					")" +
 					"UNION" +
 					"(" +
 						"SELECT \"UserName\", \"DateTime\", \"Blog\" " +
 						"FROM \"FinalProject\".\"Tweets\" " +
 						"ORDER BY \"DateTime\" DESC " +
-						"LIMIT 40" +
+						"LIMIT 20" +
 					")" +
 					"ORDER BY \"DateTime\" DESC " +
-					"LIMIT 20" +
+					"LIMIT 10" +
 					";");
 			rs = preparedStatement.executeQuery();
 		} catch (SQLException e) {
