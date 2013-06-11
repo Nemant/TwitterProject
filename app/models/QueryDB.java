@@ -329,5 +329,6 @@ public class QueryDB {
 			e.printStackTrace();
 		}
 		
-		return rs;	}
+		return rs;
+		}
 }

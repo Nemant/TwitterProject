@@ -391,6 +391,6 @@ public class Metrics {
 			} 
 		} catch (SQLException e) {
 					e.printStackTrace();
-				}
-			}
+		}
+	}
 }

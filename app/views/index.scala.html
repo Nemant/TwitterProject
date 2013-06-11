@@ -41,8 +41,50 @@
 		
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 		<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Tabs.css")">
         <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
+        
+        
+        <script>
+        function resetTabs(){
+            $("#content > div").hide(); //Hide all content
+            $("#tabs a").attr("id",""); //Reset id's      
+        }
+
+        var myUrl = window.location.href; //get URL
+        var myUrlTab = myUrl.substring(myUrl.indexOf("#")); // For mywebsite.com/tabs.html#tab2, myUrlTab = #tab2     
+        var myUrlTabName = myUrlTab.substring(0,4); // For the above example, myUrlTabName = #tab
+
+        (function(){
+            $("#content > div").hide(); // Initially hide all content
+            $("#tabs li:first a").attr("id","current"); // Activate first tab
+            $("#content > div:first").fadeIn(); // Show first tab content
+            
+            $("#tabs a").on("click",function(e) {
+                e.preventDefault();
+                if ($(this).attr("id") == "current"){ //detection for current tab
+                 return       
+                }
+                else{             
+                resetTabs();
+                $(this).attr("id","current"); // Activate this
+                $($(this).attr('name')).fadeIn(); // Show content for current tab
+                }
+            });
+
+            for (i = 1; i <= $("#tabs li").length; i++) {
+              if (myUrlTab == myUrlTabName + i) {
+                  resetTabs();
+                  $("a[name='"+myUrlTab+"']").attr("id","current"); // Activate url tab
+                  $(myUrlTab).fadeIn(); // Show url tab content        
+              }
+            }
+        })()
+        
+        </script>
+        
+        
+        
         <input type='button' value='Start Feed' id='liveFeedBtn' />
         <br />
         <div id="result"></div>
@@ -65,18 +107,21 @@
 
 	</script>
 
-
-		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-		<div id="containerRatios" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-	    <br/>
-    	Note for the following graph: Messages with less than 250 retweets have been ignored, otherwise graph is not very visible.
-		<div id="container2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-		<br/>
-		Note for the following graph: Users with less than 400 total retweets have been ignored.
-		<div id="container3" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-		<br/>
-		Note for the following graph: Users who had less than 30 retweets per message on average have been ignored.
-		<div id="container4" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<ul id="tabs">
+		    <li><a href="#" name="#tab1">One</a></li>
+		    <li><a href="#" name="#tab2">Two</a></li>
+		    <li><a href="#" name="#tab3">Three</a></li>
+		    <li><a href="#" name="#tab4">Four</a></li>    
+		    <li><a href="#" name="#tab5">Five</a></li>    
+		</ul>
+		
+		<div id="content"> 
+			<div id="tab1" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+			<div id="tab2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+			<div id="tab3" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+			<div id="tab4" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+			<div id="tab5" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+        </div>
 
 		<script>
         	var tweetData = []
