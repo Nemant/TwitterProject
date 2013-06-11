@@ -383,7 +383,7 @@
     var userDataSeries = []
 
     @for(i <- 0 until userData.length){
-        userDataSeries.push({name: '@userData(i).getUserName()', color: 'rgba(119, 152, 191, .5)', data: [[@userData(i).getTotalRT(), @userData(i).getFollowers()]]});
+        userDataSeries.push({name: '@userData(i).getUserName()', color: 'rgba(119, 152, 191, .5)', data: [[@userData(i).getFollowers(), @userData(i).getTotalRT()]]});
     }
     $(function () {
         $('#tab6').highcharts({
