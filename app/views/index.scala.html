@@ -75,7 +75,46 @@
 	</ul>
 	
 	<div id="content"> 
-		<div id="tab1" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<div id="tab1">
+		  <div id="graph1" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		  <table id="hor-minimalist-a" summary="Employee Pay Sheet">
+		    <thead>
+		        <tr>
+		            <th scope="col">Employee</th>
+		            <th scope="col">Salary</th>
+		            <th scope="col">Bonus</th>
+		            <th scope="col">Supervisor</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td>Stephen C. Cox</td>
+		            <td>$300</td>
+		            <td>$50</td>
+		            <td>Bob</td>
+		        </tr>
+		        <tr>
+		            <td>Josephin Tan</td>
+		            <td>$150</td>
+		            <td>-</td>
+		            <td>Annie</td>
+		        </tr>
+		        <tr>
+		            <td>Joyce Ming</td>
+		            <td>$200</td>
+		            <td>$35</td>
+		            <td>Andy</td>
+		        </tr>
+		        <tr>
+		            <td>James A. Pentel</td>
+		            <td>$175</td>
+		            <td>$25</td>
+		            <td>Annie</td>
+		        </tr>
+		    </tbody>
+		</table>
+		  
+		</div>
 		<div id="tab2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 		<div id="tab3" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 		<div id="tab4" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
@@ -99,7 +138,7 @@
 		        }
 		
 		$(function () {
-        $('#tab1').highcharts({
+        $('#graph1').highcharts({
             chart: {
                 zoomType: 'x',
                 spacingRight: 20
