@@ -78,47 +78,98 @@
 	<div id="content"> 
 		<div id="tab1">
 		  <div id="graph1" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-		  <table id="hor-minimalist-a" summary="Employee Pay Sheet">
-            <thead>
-                <tr>
-                    <th scope="col">Employee</th>
-                    <th scope="col">Salary</th>
-                    <th scope="col">Bonus</th>
-                    <th scope="col">Supervisor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Stephen C. Cox</td>
-                    <td>$300</td>
-                    <td>$50</td>
-                    <td>Bob</td>
-                </tr>
-                <tr>
-                    <td>Josephin Tan</td>
-                    <td>$150</td>
-                    <td>-</td>
-                    <td>Annie</td>
-                </tr>
-                <tr>
-                    <td>Joyce Ming</td>
-                    <td>$200</td>
-                    <td>$35</td>
-                    <td>Andy</td>
-                </tr>
-                <tr>
-                    <td>James A. Pentel</td>
-                    <td>$175</td>
-                    <td>$25</td>
-                    <td>Annie</td>
-                </tr>
-            </tbody>
-        </table>
+		  
 		  
 		</div>
 		<div id="tab2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 		<div id="tab3" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-		<div id="tab4" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		<div id="tab4">
+            <div id="graph2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+		
+			<table id="hor-minimalist-a" summary="Employee Pay Sheet">
+	            <thead>
+	                <tr>
+	                    <th scope="col">Username</th>
+	                    <th scope="col">No. of Followers</th>
+	                    <th scope="col">No. of Friends</th>
+	                    <th scope="col">Total Tweets</th>
+	                    <th scope="col">Total Retweets</th>
+	                    <th scope="col">Average Retweets</th>
+	                    <th scope="col">Location</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr>
+	                    <td>Arsenal</td>
+	                    <td>2,434,497</td>
+	                    <td>165,595</td>
+	                    <td>271</td>
+	                    <td>60,064</td>
+	                    <td>222</td>
+	                    <td>London</td>
+	                </tr>
+	                <tr>
+                        <td>piersmorgan</td>
+                        <td>3,558,322</td>
+                        <td>549</td>
+                        <td>61</td>
+                        <td>32,456</td>
+                        <td>532</td>
+                        <td>New York, LA, London</td>
+                    </tr>
+	                <tr>
+                        <td>FootballFunnys</td>
+                        <td>719,421</td>
+                        <td>792</td>
+                        <td>51</td>
+                        <td>19,367</td>
+                        <td>380</td>
+                        <td>England</td>
+                    </tr>
+                    <tr>
+                        <td>Footy_Jokes</td>
+                        <td>545989</td>
+                        <td>70</td>
+                        <td>41</td>
+                        <td>18799</td>
+                        <td>459</td>
+                        <td>Wordlwide</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>premierleague</td>
+                        <td>1785969</td>
+                        <td>22</td>
+                        <td>84</td>
+                        <td>total rw</td>
+                        <td>avg</td>
+                        <td>location</td>
+                    </tr>
+TRW   TT AVG      U            Foll  FR  LOC
+16155;84;192;"premierleague";1785969;22;"London"
+15816;251;63;"ID_ARSENAL";93912;923;"Indonesia"
+15125;10;1513;"BBCSporf";461375;154;"''"
+10774;162;67;"ArsenalANPI";31122;53;"Jakarta"
+8842;154;57;"Bolanet";291630;287;"''"
+8748;601;15;"DailyGunners";9282;317;"Indonesia -> Emirates stadium"
+7283;139;52;"my_supersoccer";328940;96;"Pinggir Lapangan Bola"
+7154;252;28;"tomgunner14";17773;928;"Nigeria /London"
+5785;24;241;"FootyHumour";166120;77;"''"
+5716;12;476;"SoccerBible";147428;670;"United Kingdom"
+5215;310;17;"info_arsenal";16618;426;"Indonesia"
+	                <tr>
+                        <td>Username</td>
+                        <td>Followers</td>
+                        <td>Friends</td>
+                        <td>Totl tweets</td>
+                        <td>total rw</td>
+                        <td>avg</td>
+                        <td>location</td>
+                    </tr>
+                  </tbody>
+	        </table>
+		
+		</div>
 		<div id="tab5" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
         <div id="tab6" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
     </div>
@@ -325,7 +376,7 @@
 	}
     
     $(function () {
-        $('#tab4').highcharts({
+        $('#graph4').highcharts({
             chart: {
                 //zoomType: 'x',
                 //spacingRight: 20,
