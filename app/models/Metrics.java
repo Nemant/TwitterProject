@@ -104,6 +104,38 @@ public class Metrics {
 		return returnArray;
 	}
 	
+	public static int[] getVolumeOfNewTweets() {
+		return getNewVolume(EnumDataSet.TWEETS);
+	}
+	
+	public static int[] getVolumeOfNewReTweets() {
+		return getNewVolume(EnumDataSet.RETWEETS);
+	}
+	
+	public static int[] getNewVolume(EnumDataSet workingset) {
+		int[] returnArray;
+		ResultSet rs = QueryDB.getAllNewVolume(workingset);
+		
+		List<Integer> list = new ArrayList<Integer>();
+		
+		try {
+			while (rs.next()) {
+				list.add(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		returnArray = new int[list.size()];
+		
+		for (int i = 0; i < returnArray.length; i++) {
+			returnArray[i] = list.get(i).intValue();
+		} 
+		
+		return returnArray;
+	}
+	
 	public static int[] getTotalretweetsForTweet(){
 		int[] returnArray;
 		ResultSet rs = QueryDB.getRetweetsForTweet();

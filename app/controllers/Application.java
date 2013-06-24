@@ -17,7 +17,7 @@ public class Application extends Controller {
     }
     
 	public static Result index() {
-		return ok(index.render(form(TweetID.class), Metrics.getVolumeOfTweets(), Metrics.getVolumeOfReTweets(), Metrics.getTotalretweetsForTweet(), Metrics.getTotalretweetsForUser(), Metrics.getAvgretweetsForUser(), Metrics.getTopTweetedUsers()));
+		return ok(index.render(form(TweetID.class), Metrics.getVolumeOfTweets(), Metrics.getVolumeOfReTweets(), Metrics.getTotalretweetsForTweet(), Metrics.getTotalretweetsForUser(), Metrics.getAvgretweetsForUser(), Metrics.getTopTweetedUsers(), Metrics.getVolumeOfNewTweets(), Metrics.getVolumeOfNewReTweets()));
 	}
 	
 	public static Result liveFeed() {

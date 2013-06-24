@@ -68,6 +68,33 @@ public class QueryDB {
 		return rs;
 	}
 	
+	public static ResultSet getAllNewVolume(EnumDataSet workingSet) {
+		Connection connection2 = DB.getConnection();
+		ResultSet rs = null; 
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			if (workingSet.equals(EnumDataSet.TWEETS)) {
+				preparedStatement = connection2.prepareStatement("SELECT \"UniqueTweets\" FROM \"FinalProject\".\"TweetsInInterval\" WHERE \"DateTimeStart\" > '2013-06-22 00:06:00+01' ORDER BY \"DateTimeFinish\" ASC");
+			} else if (workingSet.equals(EnumDataSet.RETWEETS)) {
+				preparedStatement = connection2.prepareStatement("SELECT \"UniqueReTweets\" FROM \"FinalProject\".\"ReTweetsInInterval\" WHERE \"DateTimeStart\" < '2013-06-22 00:06:00+01' ORDER BY \"DateTimeFinish\" ASC");
+			}
+			
+			rs = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			connection2.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	
 	public static ResultSet getRetweetsForTweet(){
 		Connection connection2 = DB.getConnection();
 		ResultSet rs = null; 
