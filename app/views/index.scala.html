@@ -575,14 +575,14 @@
                 type: 'area',
                 name: 'Tweets',
                 pointInterval: 10 * 60 * 1000,
-                pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
+                pointStart: Date.UTC(2013, 2, 02, 22, 46, 00, 0),
                 data: tweetData
             }, {
             	type: 'area',
                 name: 'ReTweets',
                 color: '#FF0000',
                 pointInterval: 10 * 60 * 1000,
-                pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
+                pointStart: Date.UTC(2013, 2, 02, 22, 45, 00, 0),
                 data: retweetData
             }]
         });
@@ -898,14 +898,14 @@
         </script>
         
         <script>
-        tweetNewData = []
+        var tweetNewData = []
         @if(tweetsNewArray != null) {
             @for(id <- tweetsNewArray) {
             	tweetNewData.push(@id);
             }
         }
     
-        retweetNewData = []
+        var retweetNewData = []
             @if(retweetsNewArray != null) {
                 @for(id <- retweetsNewArray) {
                     retweetNewData.push(@id);
@@ -971,15 +971,15 @@
             series: [{
                 type: 'area',
                 name: 'Tweets',
-                pointInterval: 10 * 60 * 1000,
-                pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
+                pointInterval: 20 * 1000,
+                pointStart: Date.UTC(2013, 3, 05, 20, 06, 00, 0),
                 data: tweetNewData
             }, {
                 type: 'area',
                 name: 'ReTweets',
                 color: '#FF0000',
                 pointInterval: 10 * 60 * 1000,
-                pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
+                pointStart: Date.UTC(2013, 3, 05, 20, 06, 00, 0),
                 data: retweetNewData
             }]
         });
