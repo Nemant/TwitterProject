@@ -898,17 +898,17 @@
         </script>
         
         <script>
-        tweetData = []
-        @if(tweetsArray != null) {
+        tweetNewData = []
+        @if(tweetsNewArray != null) {
             @for(id <- tweetsNewArray) {
-                tweetData.push(@id);
+            	tweetNewData.push(@id);
             }
         }
     
-        retweetData = []
-            @if(retweetsArray != null) {
+        retweetNewData = []
+            @if(retweetsNewArray != null) {
                 @for(id <- retweetsNewArray) {
-                    retweetData.push(@id);
+                    retweetNewData.push(@id);
                 }
             }
         
@@ -973,14 +973,14 @@
                 name: 'Tweets',
                 pointInterval: 10 * 60 * 1000,
                 pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
-                data: tweetData
+                data: tweetNewData
             }, {
                 type: 'area',
                 name: 'ReTweets',
                 color: '#FF0000',
                 pointInterval: 10 * 60 * 1000,
                 pointStart: Date.UTC(2013, 3, 02, 00, 06, 00, 0),
-                data: retweetData
+                data: retweetNewData
             }]
         });
     });
