@@ -25,18 +25,18 @@ public class Application extends Controller {
 	      return ok(ajax_result.render(tweets));
 	  }
 
-	public static Result latestTweet() {
-	      Tweet[] tweets = Metrics.getLatestFeed();
-	      return ok(ajax_result.render(tweets));
-	  }
+//	public static Result latestTweet() {
+//	      Tweet[] tweets = Metrics.getLatestFeed();
+//	      return ok(ajax_result.render(tweets));
+//	  }
 	
 	public static Result javascriptRoutes() {
 	    response().setContentType("text/javascript");
 	    return ok(
 	      Routes.javascriptRouter("jsRoutes",
 	        // Routes
-	        controllers.routes.javascript.Application.liveFeed(),
 	        controllers.routes.javascript.Application.liveFeed()
+//	        controllers.routes.javascript.Application.liveFeed()
 	      )
 	    );
 	  }
