@@ -75,9 +75,9 @@ public class QueryDB {
 		
 		try {
 			if (workingSet.equals(EnumDataSet.TWEETS)) {
-				preparedStatement = connection2.prepareStatement("SELECT \"UniqueTweets\" FROM \"FinalProject\".\"TweetsInInterval\" WHERE \"DateTimeStart\" > '2013-06-22 00:06:00+01' ORDER BY \"DateTimeFinish\" ASC");
+				preparedStatement = connection2.prepareStatement("SELECT \"UniqueTweets\" FROM \"FinalProject\".\"TweetsInInterval\" WHERE \"DateTimeStart\" > '2013-06-23 04:16:58.83+01' ORDER BY \"DateTimeFinish\" ASC");
 			} else if (workingSet.equals(EnumDataSet.RETWEETS)) {
-				preparedStatement = connection2.prepareStatement("SELECT \"UniqueReTweets\" FROM \"FinalProject\".\"ReTweetsInInterval\" WHERE \"DateTimeStart\" < '2013-06-22 00:06:00+01' ORDER BY \"DateTimeFinish\" ASC");
+				preparedStatement = connection2.prepareStatement("SELECT \"UniqueReTweets\" FROM \"FinalProject\".\"ReTweetsInInterval\" WHERE \"DateTimeStart\" < '2013-06-23 04:16:58.83+01' ORDER BY \"DateTimeFinish\" ASC");
 			}
 			
 			rs = preparedStatement.executeQuery();
